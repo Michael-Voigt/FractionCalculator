@@ -11,11 +11,11 @@ class fraction {
 	}
 
 	output() {
-		if (Number(this.enumerator) >= Number(this.denominator)) {
-			let remainder = (this.enumerator % this.denominator);
-			this.number = (this.enumerator - remainder) / this.denominator;
-			this.enumerator = this.enumerator - this.number * this.denominator;
-		}
+		// if (Number(this.enumerator) >= Number(this.denominator)) {
+		// 	let remainder = (this.enumerator % this.denominator);
+		// 	this.number = (this.enumerator - remainder) / this.denominator;
+		// 	this.enumerator = this.enumerator - this.number * this.denominator;
+		// }
 
 		if (this.enumerator == 0) {
 			alert(this.number);
@@ -56,6 +56,14 @@ class fraction {
 		if (((this.enumerator % devisor) == 0) && ((this.denominator % devisor) == 0)) {
 			this.enumerator = this.enumerator / devisor;
 			this.denominator = this.denominator / devisor;
+		}
+	}
+
+	convertToMixed() {
+		if (Number(this.enumerator) >= Number(this.denominator)) {
+			let remainder = (this.enumerator % this.denominator);
+			this.number = (this.enumerator - remainder) / this.denominator;
+			this.enumerator = this.enumerator - this.number * this.denominator;
 		}
 	}
 
