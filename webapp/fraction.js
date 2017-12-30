@@ -74,12 +74,14 @@ class fraction {
 		this.number = fraction1.number + fraction2.number;
 		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
+		this.reduce();
 	}
 
 	substract(fraction1, fraction2) {
 		this.number = fraction1.number - fraction2.number;
 		this.enumerator = fraction1.enumerator * fraction2.denominator - fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
+		this.reduce();
 	}
 
 	multiply(fraction1, fraction2) {
@@ -87,6 +89,7 @@ class fraction {
 		fraction2.convertToNonMixed();
 		this.enumerator = fraction1.enumerator * fraction2.enumerator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
+		this.reduce();
 		this.convertToMixed();
 	}
 
@@ -95,6 +98,7 @@ class fraction {
 		fraction2.convertToNonMixed();
 		this.enumerator = fraction1.enumerator * fraction2.denominator;
 		this.denominator = fraction1.denominator * fraction2.enumerator;
+		this.reduce();
 		this.convertToMixed();
 	}
 }
