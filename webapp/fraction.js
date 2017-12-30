@@ -6,17 +6,12 @@ class fraction {
 	}
 
 	input(string) {
+		this.number = prompt(string + ' (Number)', 0);
 		this.enumerator = prompt(string + ' (Enumerator)', 100);
 		this.denominator = prompt(string + ' (Denominator)', 100);
 	}
 
 	output() {
-		// if (Number(this.enumerator) >= Number(this.denominator)) {
-		// 	let remainder = (this.enumerator % this.denominator);
-		// 	this.number = (this.enumerator - remainder) / this.denominator;
-		// 	this.enumerator = this.enumerator - this.number * this.denominator;
-		// }
-
 		if (this.enumerator == 0) {
 			alert(this.number);
 		} else {
@@ -67,17 +62,26 @@ class fraction {
 		}
 	}
 
+	convertToNonMixed() {
+		this.enumerator = this.enumerator + this.number * this.denominator;
+		this.number = 0;
+	}
+
 	add(fraction1, fraction2) {
 		this.number = fraction1.number + fraction2.number;
 		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
 	}
 
-	// outputArray() {
-	// 	let string = "";
+	substract(fraction1, fraction2) {
+		this.number = fraction1.number - fraction2.number;
+		this.enumerator = fraction1.enumerator * fraction2.denominator - fraction2.enumerator * fraction1.denominator;
+		this.denominator = fraction1.denominator * fraction2.denominator;
+	}
 
-	// 	for (let number in a) {
-	// 		string = string + a[number] + " ";
-	// 	}
-	// 	alert(string);
+	multiply(fraction1, fraction2) {
+		this.number = fraction1.number + fraction2.number;
+		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
+		this.denominator = fraction1.denominator * fraction2.denominator;
+	}
 }
