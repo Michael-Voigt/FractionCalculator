@@ -18,14 +18,12 @@
 			
 			let operation = prompt('Operation', '+');
 			switch(operation) {
-				case '+': result.add(fraction1, fraction2);
-				case '-': result.substract(fraction1, fraction2);
-				case '*': result.multiply(fraction1, fraction2);
-				case '/': result.devide(fraction1, fraction2);
+				case '+': result.add(fraction1, fraction2); break;
+				case '-': result.substract(fraction1, fraction2); break;
+				case '*': result.multiply(fraction1, fraction2); break;
+				case '/': result.devide(fraction1, fraction2); break;
 			}	
 
-			result.output();
-			result.convertToNonMixed();
 			result.output();
 		</script>
 	</body>

@@ -1,25 +1,35 @@
 class fraction {
 	constructor() {
-		this.number = 0;
 		this.enumerator = 0;
 		this.denominator = 1;
 	}
 
 	input(string) {
-		this.number = prompt(string + ' (Number)', 0);
+		let number = prompt(string + ' (Number)', 0);
 		this.enumerator = prompt(string + ' (Enumerator)', 100);
 		this.denominator = prompt(string + ' (Denominator)', 100);
+		if (number != 0) {
+			this.enumerator = Number(this.enumerator) + Number(number) * Number(this.denominator);
+		}
 		this.reduce();
 	}
 
 	output() {
+		// Convert to mixed fraction
+		let number = 0;
+		if (Number(this.enumerator) >= Number(this.denominator)) {
+			number = (this.enumerator - (this.enumerator % this.denominator)) / this.denominator;
+			this.enumerator = this.enumerator - number * this.denominator;
+		}
+
+		// output fraction
 		if (this.enumerator == 0) {
-			alert(this.number);
+			alert(number);
 		} else {
-			if (this.number == 0) {
+			if (number == 0) {
 				alert(this.enumerator + '/' + this.denominator);
 			} else {
-				alert(this.number + ' ' + this.enumerator + '/' + this.denominator);
+				alert(number + ' ' + this.enumerator + '/' + this.denominator);
 			}
 		}
 	}
@@ -28,14 +38,6 @@ class fraction {
 		let upperLimit = Math.sqrt(Math.max(this.enumerator, this.denominator));
 		let prime = new primeNumber();
 		let devisor = prime.next();
-
-		// let debug = 0;
-		// debug = prompt('debug', 0);
-		// if (debug != 0) {
-		// 	for (let p = 1; p < 10; p++) {
-		// 		alert(p + ". Prime Number is " + prime.next());
-		// 	}
-		// }
 
 		while (devisor <= upperLimit) {
 			// can the fraction be shortened by the divisor ?
@@ -55,50 +57,35 @@ class fraction {
 		}
 	}
 
-	convertToMixed() {
-		if (Number(this.enumerator) >= Number(this.denominator)) {
-			let remainder = (this.enumerator % this.denominator);
-			this.number = (this.enumerator - remainder) / this.denominator;
-			this.enumerator = this.enumerator - this.number * this.denominator;
-		}
-	}
-
-	convertToNonMixed() {
-		if (this.number != 0) {
-			this.enumerator = Number(this.enumerator) + Number(this.number) * Number(this.denominator);
-			this.number = 0;
-		}
-	}
+	// convertToMixed() {
+	// 	if (Number(this.enumerator) >= Number(this.denominator)) {
+	// 		let remainder = (this.enumerator % this.denominator);
+	// 		this.number = (this.enumerator - remainder) / this.denominator;
+	// 		this.enumerator = this.enumerator - this.number * this.denominator;
+	// 	}
+	// }
 
 	add(fraction1, fraction2) {
-		this.number = fraction1.number + fraction2.number;
 		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
 		this.reduce();
 	}
 
 	substract(fraction1, fraction2) {
-		this.number = fraction1.number - fraction2.number;
 		this.enumerator = fraction1.enumerator * fraction2.denominator - fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
 		this.reduce();
 	}
 
 	multiply(fraction1, fraction2) {
-		fraction1.convertToNonMixed();
-		fraction2.convertToNonMixed();
 		this.enumerator = fraction1.enumerator * fraction2.enumerator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
 		this.reduce();
-		this.convertToMixed();
 	}
 
 	devide(fraction1, fraction2) {
-		fraction1.convertToNonMixed();
-		fraction2.convertToNonMixed();
 		this.enumerator = fraction1.enumerator * fraction2.denominator;
 		this.denominator = fraction1.denominator * fraction2.enumerator;
 		this.reduce();
-		this.convertToMixed();
 	}
 }
