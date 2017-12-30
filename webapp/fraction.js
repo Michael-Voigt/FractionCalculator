@@ -57,14 +57,6 @@ class fraction {
 		}
 	}
 
-	// convertToMixed() {
-	// 	if (Number(this.enumerator) >= Number(this.denominator)) {
-	// 		let remainder = (this.enumerator % this.denominator);
-	// 		this.number = (this.enumerator - remainder) / this.denominator;
-	// 		this.enumerator = this.enumerator - this.number * this.denominator;
-	// 	}
-	// }
-
 	add(fraction1, fraction2) {
 		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
