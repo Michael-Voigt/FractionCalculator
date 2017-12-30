@@ -9,6 +9,7 @@ class fraction {
 		this.number = prompt(string + ' (Number)', 0);
 		this.enumerator = prompt(string + ' (Enumerator)', 100);
 		this.denominator = prompt(string + ' (Denominator)', 100);
+		this.reduce();
 	}
 
 	output() {
@@ -63,8 +64,10 @@ class fraction {
 	}
 
 	convertToNonMixed() {
-		this.enumerator = this.enumerator + this.number * this.denominator;
-		this.number = 0;
+		if (this.number != 0) {
+			this.enumerator = Number(this.enumerator) + Number(this.number) * Number(this.denominator);
+			this.number = 0;
+		}
 	}
 
 	add(fraction1, fraction2) {
@@ -80,8 +83,18 @@ class fraction {
 	}
 
 	multiply(fraction1, fraction2) {
-		this.number = fraction1.number + fraction2.number;
-		this.enumerator = fraction1.enumerator * fraction2.denominator + fraction2.enumerator * fraction1.denominator;
+		fraction1.convertToNonMixed();
+		fraction2.convertToNonMixed();
+		this.enumerator = fraction1.enumerator * fraction2.enumerator;
 		this.denominator = fraction1.denominator * fraction2.denominator;
+		this.convertToMixed();
+	}
+
+	devide(fraction1, fraction2) {
+		fraction1.convertToNonMixed();
+		fraction2.convertToNonMixed();
+		this.enumerator = fraction1.enumerator * fraction2.denominator;
+		this.denominator = fraction1.denominator * fraction2.enumerator;
+		this.convertToMixed();
 	}
 }
