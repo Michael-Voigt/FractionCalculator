@@ -40,16 +40,17 @@ class fraction {
 		let devisor = prime.next();
 
 		while (devisor <= upperLimit) {
-			// can the fraction be shortened by the divisor ?
+			// can the fraction be shortened by the prime number stored in divisor ?
 			if (((this.enumerator % devisor) == 0) && ((this.denominator % devisor) == 0)) {
 				this.enumerator = this.enumerator / devisor;
 				this.denominator = this.denominator / devisor;
-				// a.push(devisor);
 				upperLimit = Math.sqrt(Math.max(this.enumerator, this.denominator));
 			} else {
 				devisor = prime.next();
 			}
 		}
+
+		// can the fraction be shortened by the minimum out of enumerator and denominator ?
 		devisor = Math.min(this.enumerator, this.denominator);
 		if (((this.enumerator % devisor) == 0) && ((this.denominator % devisor) == 0)) {
 			this.enumerator = this.enumerator / devisor;
