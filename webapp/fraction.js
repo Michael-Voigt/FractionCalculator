@@ -6,8 +6,8 @@ class fraction {
 
 	input(string) {
 		let number = prompt(string + ' (Number)', 0);
-		this.enumerator = prompt(string + ' (Enumerator)', 100);
-		this.denominator = prompt(string + ' (Denominator)', 100);
+		this.enumerator = prompt(string + ' (Enumerator)', 1);
+		this.denominator = prompt(string + ' (Denominator)', 1);
 		if (number != 0) {
 			this.enumerator = Number(this.enumerator) + Number(number) * Number(this.denominator);
 		}
