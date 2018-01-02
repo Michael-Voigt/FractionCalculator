@@ -4,36 +4,6 @@ class fraction {
 		this.denominator = 1;
 	}
 
-	input(string) {
-		let number = prompt(string + ' (Number)', 0);
-		this.enumerator = prompt(string + ' (Enumerator)', 1);
-		this.denominator = prompt(string + ' (Denominator)', 1);
-		if (number != 0) {
-			this.enumerator = Number(this.enumerator) + Number(number) * Number(this.denominator);
-		}
-		this.reduce();
-	}
-
-	output() {
-		// Convert to mixed fraction
-		let number = 0;
-		if (Number(this.enumerator) >= Number(this.denominator)) {
-			number = (this.enumerator - (this.enumerator % this.denominator)) / this.denominator;
-			this.enumerator = this.enumerator - number * this.denominator;
-		}
-
-		// output fraction
-		if (this.enumerator == 0) {
-			alert(number);
-		} else {
-			if (number == 0) {
-				alert(this.enumerator + '/' + this.denominator);
-			} else {
-				alert(number + ' ' + this.enumerator + '/' + this.denominator);
-			}
-		}
-	}
-
 	reduce() {
 		let upperLimit = Math.sqrt(Math.max(this.enumerator, this.denominator));
 		let prime = new primeNumber();

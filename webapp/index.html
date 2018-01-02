@@ -6,19 +6,19 @@
 		<title>Fraction Calculator</title>
 	</head>
 	<body>
-		<p>Fraction 1</p>
+		<h1>Fraction 1</h1>
 		<p>Enumerator <input type="Enumerator" id="Enumerator1" value="1"></p>
 		<p>Denominator <input type="Enumerator" id="Denominator1" value="1"></p>
-		<p>Fraction 2</p>
+		<h1>Fraction 2</h1>
 		<p>Enumerator <input type="Enumerator" id="Enumerator2" value="1"></p>
 		<p>Denominator <input type="Enumerator" id="Denominator2" value="1"></p>
+		<br>
 		<button onclick="add()">+</button>
 		<button onclick="substract()">-</button>
 		<button onclick="multiply()">*</button>
 		<button onclick="devide()">/</button>
-		<p>Result</p>
-		<p id="EnumeratorResult"></p>
-		<p id="DenominatorResult"></p>
+		<h1>Result</h1>
+		<p id="Result"></p>
 		<script src="primeNumber.js"></script>
 		<script src="fraction.js"></script>
 		<script>
@@ -55,8 +55,23 @@
 			}
 			
 			function output() {
-				document.getElementById("EnumeratorResult").innerHTML = result.enumerator;
-				document.getElementById("DenominatorResult").innerHTML = result.denominator;			
+				// Convert to mixed fraction
+				let number = 0;
+				if (Number(result.enumerator) >= Number(result.denominator)) {
+					number = (result.enumerator - (result.enumerator % result.denominator)) / result.denominator;
+					result.enumerator = result.enumerator - number * result.denominator;
+				}
+		
+				// output fraction
+				if (result.enumerator == 0) {
+					document.getElementById("Result").innerHTML = number;
+				} else {
+					if (number == 0) {
+						document.getElementById("Result").innerHTML = result.enumerator + '/' + result.denominator;
+					} else {
+						document.getElementById("Result").innerHTML = number + ' ' + result.enumerator + '/' + result.denominator;
+					}
+				}		
 			}
 		</script>
 	</body>
