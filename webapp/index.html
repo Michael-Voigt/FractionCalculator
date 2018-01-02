@@ -3,49 +3,60 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta charset="UTF-8">
-		<title>OpenSAP - Developing Web Apps with SAPUI5</title>
+		<title>Fraction Calculator</title>
 	</head>
 	<body>
 		<p>Fraction 1</p>
-		<p>Enumerator</p>
-		<input type="Enumerator" id="Enumerator1" value="1">
-		<p>Denominator</p>
-		<input type="Denominator" id="Denominator1" value="1">
+		<p>Enumerator <input type="Enumerator" id="Enumerator1" value="1"></p>
+		<p>Denominator <input type="Enumerator" id="Denominator1" value="1"></p>
 		<p>Fraction 2</p>
-		<p>Enumerator</p>
-		<input type="Enumerator" id="Enumerator2" value="1">
-		<p>Denominator</p>
-		<input type="Denominator" id="Denominator2" value="1">
-		<button onclick="add()">Add</button>
+		<p>Enumerator <input type="Enumerator" id="Enumerator2" value="1"></p>
+		<p>Denominator <input type="Enumerator" id="Denominator2" value="1"></p>
+		<button onclick="add()">+</button>
+		<button onclick="substract()">-</button>
+		<button onclick="multiply()">*</button>
+		<button onclick="devide()">/</button>
 		<p>Result</p>
 		<p id="EnumeratorResult"></p>
 		<p id="DenominatorResult"></p>
-		
 		<script src="primeNumber.js"></script>
 		<script src="fraction.js"></script>
 		<script>
 		    let fraction1 = new fraction();
 		    let fraction2 = new fraction();
 		    let result = new fraction();
-		    
-			// let operation = prompt('Operation', '+');
-			// switch(operation) {
-			// 	case '+': result.add(fraction1, fraction2); break;
-			// 	case '-': result.substract(fraction1, fraction2); break;
-			// 	case '*': result.multiply(fraction1, fraction2); break;
-			// 	case '/': result.devide(fraction1, fraction2); break;
-			// }	
-			
+		    			
 			function add() {
+				input();
+				result.add(fraction1, fraction2);
+				output();
+			}
+			function substract() {
+				input();
+				result.substract(fraction1, fraction2);
+				output();
+			}
+			function multiply() {
+				input();
+				result.multiply(fraction1, fraction2);
+				output();
+			}
+			function devide() {
+				input();
+				result.devide(fraction1, fraction2);
+				output();
+			}
+									
+			function input() {
 				fraction1.enumerator = Number(document.getElementById("Enumerator1").value);
 				fraction1.denominator = Number(document.getElementById("Denominator1").value);
 				fraction2.enumerator = Number(document.getElementById("Enumerator2").value);
 				fraction2.denominator = Number(document.getElementById("Denominator2").value);
-				
-				result.add(fraction1, fraction2);
-				
+			}
+			
+			function output() {
 				document.getElementById("EnumeratorResult").innerHTML = result.enumerator;
-				document.getElementById("DenominatorResult").innerHTML = result.denominator;
+				document.getElementById("DenominatorResult").innerHTML = result.denominator;			
 			}
 		</script>
 	</body>
